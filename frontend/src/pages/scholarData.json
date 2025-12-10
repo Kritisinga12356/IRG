@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "National Scholarship Program (NSP)",
+    "img": "https://via.placeholder.com/400x250?text=NSP",
+    "desc": "This scholarship is provided by the Government of India to help students continue their higher education.",
+    "details": {
+      "eligibility": "Must be an Indian citizen and studying in Class 10–12 or graduation.",
+      "documents": [
+        "Aadhaar Card",
+        "Income Certificate",
+        "Passport Size Photo",
+        "Previous Year's Marksheet"
+      ],
+      "amount": "₹10,000 – ₹50,000 per year",
+      "process": "Apply online through the National Scholarship Portal (NSP)."
+    },
+    "link": "https://scholarships.gov.in/"
+  },
+
+  {
+    "id": 2,
+    "name": "State Merit Scholarship (UP)",
+    "img": "https://via.placeholder.com/400x250?text=State+Merit",
+    "desc": "The State Merit Scholarship helps meritorious students with financial support.",
+    "details": {
+      "eligibility": "Minimum 75% marks in the previous exam.",
+      "documents": [
+        "ID Proof",
+        "Caste Certificate (if applicable)",
+        "Marksheet",
+        "Bank Passbook"
+      ],
+      "amount": "₹5,000 – ₹20,000",
+      "process": "Apply through the UP state scholarship portal."
+    },
+    "link": "https://scholarship.up.gov.in/"
+  },
+
+  {
+    "id": 3,
+    "name": "Private Foundation Scholarship",
+    "img": "https://via.placeholder.com/400x250?text=Private+Scholarship",
+    "desc": "This scholarship is offered by a private foundation to support students from low-income families.",
+    "details": {
+      "eligibility": "Family income below ₹2,00,000 annually.",
+      "documents": [
+        "Income Certificate",
+        "School ID Card",
+        "Aadhaar Card",
+        "Address Proof"
+      ],
+      "amount": "₹8,000 – ₹30,000",
+      "process": "Fill the online form and upload documents."
+    },
+    "link": "https://www.myscheme.gov.in/"
+  }
+]

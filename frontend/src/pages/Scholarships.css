@@ -1,0 +1,126 @@
+.scholar-container {
+  padding: 40px;
+  max-width: 1500px;
+  margin: auto;
+}
+
+/* Header Title */
+.page-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 800;
+ 
+ 
+  color: black;
+  margin-bottom: 10px;
+}
+
+/* Subtitle text */
+.page-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 35px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search + Filter Row */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.scholar-search,
+.scholar-filter {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  background: #fff;
+}
+
+.scholar-search {
+  flex: 1;
+}
+
+.scholar-filter {
+  width: 220px;
+}
+
+/* Card Grid */
+.scholar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* Individual Card */
+.scholar-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
+}
+
+.scholar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 30px rgba(0,0,0,0.18);
+}
+
+/* Image */
+.scholar-img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Content */
+.scholar-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.scholar-card p {
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.45;
+}
+
+/* Buttons */
+.official-btn,
+.read-more-btn {
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.official-btn {
+  color: #0056d4;
+}
+
+.read-more-btn {
+  color: #00b4ff;
+}
+
+/* Hover underline */
+.official-btn:hover,
+.read-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+  }
+  .scholar-filter {
+    width: 100%;
+  }
+}

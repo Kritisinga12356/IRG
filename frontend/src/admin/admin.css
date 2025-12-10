@@ -1,0 +1,35 @@
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-navbar {
+  background: #003366;
+  padding: 15px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-container {
+  display: flex;
+}
+
+.admin-sidebar {
+  width: 220px;
+  background: #e3e3e3;
+  padding: 20px;
+  height: 100vh;
+}
+
+.admin-content {
+  padding: 20px;
+  width: 100%;
+}
+
+.sch-card {
+  background: #fafafa;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
