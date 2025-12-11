@@ -23,33 +23,77 @@
 //     res.json({ message: "deleted" });
 //   } catch (err) { res.status(500).json({ message: err.message }); }
 // };
-const cloudinary = require("../config/cloudinary");
 const Scholarship = require("../models/Scholarship");
 
+// --------------------------------------
+// ADD SCHOLARSHIP  (With Multer Image)
+// --------------------------------------
 exports.addScholarship = async (req, res) => {
   try {
-    let imageUrl = null;
-
-    if (req.file) {
-      const uploadRes = await cloudinary.uploader.upload_stream(
-        { folder: "scholarships" },
-        (err, result) => {
-          if (err) console.log(err);
-          imageUrl = result.secure_url;
-        }
-      );
-      uploadRes.end(req.file.buffer);
-    }
-
     const newScholarship = await Scholarship.create({
       title: req.body.title,
       description: req.body.description,
       applyLink: req.body.applyLink,
-      image: imageUrl,
+      image: req.file ? req.file.filename : null,
     });
 
     res.json({ success: true, scholarship: newScholarship });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// --------------------------------------
+// GET ALL SCHOLARSHIPS
+// --------------------------------------
+exports.getScholarships = async (req, res) => {
+  try {
+    const scholarships = await Scholarship.find().sort({ _id: -1 });
+    res.json(scholarships);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch scholarships" });
+  }
+};
+
+// --------------------------------------
+// UPDATE SCHOLARSHIP  (optional image)
+// --------------------------------------
+exports.updateScholarship = async (req, res) => {
+  try {
+    const updateData = {
+      title: req.body.title,
+      description: req.body.description,
+      applyLink: req.body.applyLink,
+    };
+
+    if (req.file) {
+      updateData.image = req.file.filename;
+    }
+
+    const updated = await Scholarship.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ error: "Scholarship not found" });
+    }
+
+    res.json({ success: true, scholarship: updated });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// --------------------------------------
+// DELETE SCHOLARSHIP
+// --------------------------------------
+exports.deleteScholarship = async (req, res) => {
+  try {
+    await Scholarship.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Scholarship deleted" });
+  } catch (err) {
+    res.status(500).json({ error: "Delete failed" });
   }
 };

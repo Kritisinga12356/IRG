@@ -49,7 +49,7 @@ export default function AdminLogin() {
             required
           />
 
-          <button style={styles.button}>Login</button>
+          <button style={styles.button} >Login</button>
 
           {/* 🔙 Back Button (Login ke niche) */}
           <Link to="/" style={styles.backBtn}>
