@@ -1,55 +1,39 @@
-
-
 import React, { useEffect, useState } from "react";
 import ScholarshipCard from "../components/ScholarshipCard";
-
-
+import API from "../api";
 
 export default function Scholarships() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  
+  const BASE_URL = "https://irg-8.onrender.com";   // ⭐ Render Backend URL
 
-
-  const load = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/scholarships");
-      const data = await res.json();
-
-      console.log("API DATA =>", data);
-
-      // If API returns { success, data }
-      if (Array.isArray(data)) {
-        setList(data);
-      } else if (Array.isArray(data.data)) {
-        setList(data.data);
-      } else {
-        setList([]); // fallback
-      }
-    } catch (err) {
-      console.error(err);
-      setList([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  
   useEffect(() => {
-  const load = async () => {
-    const res = await fetch("http://localhost:5000/api/scholarships");
-    const json = await res.json();
+    const load = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/api/scholarships`); // ⭐ FIXED
+        const data = await res.json();
 
-    console.log("API RESPONSE:", json);
+        console.log("API RESPONSE:", data);
 
-    setList(json);  // ⭐ backend array भेज रहा है
-    setLoading(false);
-  };
-  load();
-}, []);
+        // Backend returns array
+        if (Array.isArray(data)) {
+          setList(data);
+        } else if (Array.isArray(data.data)) {
+          setList(data.data);
+        } else {
+          setList([]);
+        }
+      } catch (e) {
+        console.log("Error fetching:", e);
+        setList([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-
+    load();
+  }, []);
 
   return (
     <div style={{ padding: 30 }}>
@@ -62,9 +46,6 @@ export default function Scholarships() {
         Search, filter, and explore verified opportunities for your education.
       </p>
 
-      
-
-       
       {loading ? (
         <p style={{ textAlign: "center" }}>Loading...</p>
       ) : (
@@ -72,19 +53,14 @@ export default function Scholarships() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 58,marginTop: 32,
+            gap: 58,
+            marginTop: 32,
           }}
         >
           {Array.isArray(list) &&
             list.map((item) => <ScholarshipCard key={item._id} item={item} />)}
         </div>
-       
-
       )}
     </div>
-   
-
   );
 }
-
-

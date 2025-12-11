@@ -159,13 +159,15 @@ export default function ScholarshipCard({ item }) {
     applyLink = "#",
   } = item;
 
+  const BASE_URL = "https://irg-8.onrender.com"; // ⭐ Render backend URL
+
   return (
     <div style={styles.card}>
 
       {/* IMAGE — Safe Fallback */}
       {image ? (
         <img
-          src={`http://localhost:5000/uploads/${image}`}
+          src={`${BASE_URL}/uploads/${image}`}   // ⭐ FIXED URL
           alt={title}
           style={styles.image}
         />
